@@ -1,11 +1,4 @@
 {
   "name": "@bkl/monorepo",
-  "version": "0.0.0",
-  "scripts": {
-    "typecheck": "tsc --noEmit && pnpm -C packages/eslint-plugin run typecheck",
-    "test": "vitest",
-    "test:update": "vitest -u",
-    "test:integration": "pnpm -F svelte-scoped test:integration",
-    "test:ci": "nr build && nr typecheck && nr lint && nr test && nr test:integration"
-  }
+  "version": "0.0.0"
 }
