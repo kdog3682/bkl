@@ -5,29 +5,44 @@ on:
     branches:
       - main
 
-  pull_request:
-    branches:
-      - main
+permissions:
+  contents: read # to fetch code (actions/checkout)
+
 
 jobs:
-  test:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
-        os: [ubuntu-latest]
-      fail-fast: false
-
+  build:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          registry-url: https://registry.npmjs.org/
+          node-version: '20.9.0'
           cache: pnpm
 
-      - run: pnpm install
-      - run: pnpm run test:unit
+      - name: setup and run tests
+        working-directory: ./frontend
+        run: |
+          pnpm install
+          pnpm run test:unit
+          pnpm run build
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: production-files
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+
