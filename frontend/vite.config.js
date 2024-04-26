@@ -1,14 +1,23 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import Vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
 
+const url = fileURLToPath(new URL('./src', import.meta.url))
 export default defineConfig({
   plugins: [
-    vue(),
+    Vue(),
+    Components(),
+    AutoImport({
+        imports: ['vue', 'vue-router', 'pinia'],
+        dirs: ['./composables'],
+    })
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': url,
+      '~': url
     }
   },
   base: '/bkl/',
