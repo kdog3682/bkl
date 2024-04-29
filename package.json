@@ -11,7 +11,7 @@
   "scripts": {
     "test:frontend": "pnpm -C ./frontend/brooklynlearning run test",
     "dev:clippy": "pnpm -C ./apps/examples/ClipboardCollector run dev",
-    "build:clippy": "pnpm -C ./apps/examples/ClipboardCollector run build",
+    "build:clippy": "pnpm -C ./apps/examples/ClipboardCollector run build"
   },
   "engines": {
     "node": ">=18.12.0"
