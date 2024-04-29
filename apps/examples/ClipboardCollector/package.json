@@ -1,0 +1,22 @@
+{
+  "name": "ClipboardCollector",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.0"
+  },
+  "meta": {
+    "desc": "This app collects copy and paste and saves them to local storage.",
+    "difficulty": 1
+  },
+  "packageManager": "pnpm@9.0.6"
+}

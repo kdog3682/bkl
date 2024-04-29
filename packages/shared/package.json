@@ -1,0 +1,15 @@
+{
+  "name": "@bkl/shared",
+  "author": "kdog3682 <kdog3682@gmail.com>",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.0.6",
+  "exports": {
+      ".": "./dist/bundle.js",
+      "./utilities": "./dist/bundle.js"
+  },
+  "scripts": {
+    "build": "vite build",
+    "test": "vitest"
+  }
+}

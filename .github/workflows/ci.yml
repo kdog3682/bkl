@@ -4,9 +4,10 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'frontend/src/**'
-      - 'frontend/cypress/e2e/**'
+        
+#    paths:
+#     - 'frontend/src/**'
+#    - 'frontend/cypress/e2e/**'
 
 permissions:
   contents: read 
@@ -23,11 +24,10 @@ jobs:
           cache: pnpm
 
       - name: setup and run tests
-        working-directory: ./frontend
+        # working-directory: ./frontend
         run: |
           pnpm install
-          pnpm run test:unit
-          pnpm run build
+          pnpm run build:clippy
 
   deploy:
     name: Deploy

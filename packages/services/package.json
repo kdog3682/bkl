@@ -1,0 +1,23 @@
+{
+    "name": "@bkl/services",
+    "author": "kdog3682 <kdog3682@gmail.com>",
+    "type": "module",
+    "version": "0.0.0",
+    "packageManager": "pnpm@9.0.6",
+    "exports": {
+        ".": {
+            "import": "./dist/bundle.js"
+        }
+    },
+    "scripts": {
+        "build": "vite build",
+        "test": "vitest"
+    },
+    "dependencies": {
+        "@bkl/env": "workspace:^",
+        "@bkl/shared": "workspace:^",
+        "@octokit/core": "^6.1.2",
+        "@octokit/rest": "^20.1.0",
+        "firebase": "^10.11.1"
+    }
+}
