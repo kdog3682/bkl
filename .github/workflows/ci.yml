@@ -24,7 +24,6 @@ jobs:
           cache: pnpm
 
       - name: setup and run tests
-        # working-directory: ./frontend
         run: |
           pnpm install
           pnpm run build:clippy
@@ -37,6 +36,7 @@ jobs:
 
     steps:
       - name: Download artifacts
+        working-directory: ./apps/examples/ClipboardCollector/dist
         uses: actions/download-artifact@v3
         with:
           name: production-files
