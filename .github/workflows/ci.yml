@@ -13,7 +13,15 @@ permissions:
   contents: read 
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run some placeholder tests
+        run: |
+          echo howdy
+
   build:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,13 +32,29 @@ jobs:
           cache: pnpm
 
       - name: setup and run tests
-        working-directory: ./apps/examples/ClipboardCollector
         run: |
           pnpm install
-          pnpm run build
+          pnpm run build:clippy
 
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-files
+          path: ./dist
+
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v3
+        with:
+          name: production-files
+          path: ./apps/examples/ClipboardCollector/dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
