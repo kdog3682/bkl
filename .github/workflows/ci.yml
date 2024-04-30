@@ -36,19 +36,6 @@ jobs:
           pnpm install
           pnpm run build:clippy
 
-      - name: Before Upload
-        run: |
-          cd ./apps/examples/ClipboardCollector/dist
-          printf "There are %'d files in %s\n" "$(ls -1q "$PWD/dist" | wc -l)" "$PWD/dist"
-
-          # THIS WORKS.
-          # https://github.com/kdog3682/bkl/actions/runs/8887495213
-          # shows the artifacts as zip file
-          # files are definitely found here
-          # path: ./dist
-          # files are NOT FOUND here.
-
-
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
         with:
@@ -56,15 +43,14 @@ jobs:
           name: production-files
           path: ./apps/examples/ClipboardCollector/dist
 
-      - name: After Upload
-        run: |
-          cd ./apps/examples/ClipboardCollector/dist
-          printf "There are %'d files in %s\n" "$(ls -1q "$PWD/dist" | wc -l)" "$PWD/dist"
-
-
   deploy:
     name: Deploy
     needs: build
+    permissions:
+      pages: write
+      contents: write
+      pull-requests: write
+
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 
@@ -77,7 +63,7 @@ jobs:
 
       - name: After Download LS
         run: |
-          echo finished download
+          echo finished download!
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
