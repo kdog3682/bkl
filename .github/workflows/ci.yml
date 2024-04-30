@@ -38,7 +38,8 @@ jobs:
           pnpm run build:clippy
 
       - name: Upload production-ready build files
-        uses: actions/upload-artifact@v1
+        # uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v1
         with:
           if-no-files-found: error
           name: github-pages
@@ -60,4 +61,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v2
