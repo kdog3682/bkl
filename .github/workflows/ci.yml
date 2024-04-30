@@ -24,12 +24,14 @@ jobs:
           cache: pnpm
 
       - name: setup and run tests
+        working-directory: ./apps/examples/ClipboardCollector
         run: |
           pnpm install
-          pnpm run build:clippy
+          pnpm run build
 
       - name: Download artifacts
         uses: actions/download-artifact@v4
+        working-directory: ./apps/examples/ClipboardCollector
         with:
           name: production-files
           path: ./dist
