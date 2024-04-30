@@ -39,9 +39,22 @@ jobs:
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
         with:
+          if-no-files-found: error
           name: production-files
-          path: ./apps/examples/ClipboardCollector/dists
+          path: ./apps/examples/ClipboardCollector/dist
+
+      - name: After Upload
+        run: |
+          ls -R
+          echo trying to see what is here After upload
+
+            
+          # THIS WORKS.
+          # https://github.com/kdog3682/bkl/actions/runs/8887495213
+          # shows the artifacts as zip file
+          # files are definitely found here
           # path: ./dist
+          # files are NOT FOUND here.
 
 
   deploy:
@@ -51,11 +64,21 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
+      - name: Before Download LS
+        run: |
+          ls -R
+          echo trying to see what is here
+
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
           name: production-files
-          path: ./apps/examples/ClipboardCollector/dist
+          path: ./dist
+
+      - name: After Download LS
+        run: |
+          ls -R
+          echo trying to see what is here
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
