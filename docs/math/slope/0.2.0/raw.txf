@@ -1,0 +1,118 @@
+---
+mode: log
+top: true
+---
+
+
+flex
+    graph
+        background: schoolbook
+        points: 0 -2 2 3
+        equation: true
+
+    #big-arrow
+
+    graph
+        background: schoolbook
+        points: 0 -2 2 3
+        equation: line
+                3foo()
+
+flex
+    The slope of a line is how fast it rises.
+
+    diagram
+        name: slope-triangle
+        arrows: true
+        label: a gentle slope
+        background: none
+        points: (-2, 0), (3, 1)
+        multiline-description: true
+        defined-as: dydx
+
+flex
+    Sometimes the slope is steep.
+    diagram
+        name: slope-triangle
+        arrows: true
+        background: plain-grid
+        points: (-2, -2), (1, 5)
+        defined-as: m
+        stick-figure: Ahhh!
+
+flex
+    sometimes it points down.
+    diagram
+        name: slope-triangle
+        arrows: true
+        stick-figure: Ahhhhhhh!
+        background: schoolbook
+        defined-as: rise/run
+
+flex
+    sometimes it doesnt go anywhere at all
+    diagram
+        name: slope-triangle
+        format: arrows
+        stick-figures: 
+            x-pos: 1
+            text: Why arent we moving?
+            face: right
+
+            x-pos: 3
+            text: Because the slope is 0
+            face: left
+
+        defined-as: equation
+
+
+flex
+    slope goes by many names
+
+    list
+        #frac([sym.Delta y], [sym.delta x])
+        #frac("change in y", "change in x")
+        #frac("dy", "dx")
+        rate of change
+        $m$
+        rise over run #frac("rise", "run")
+
+
+So many names!
+
+You just need to remember one thing.
+
+Look for the triangle. 
+The triangle will bring you to the slope.
+
+
+flex
+    graph
+        background: schoolbook
+        points: 0 -2 2 3
+
+    javascript
+        implicit: points
+        foo()
+
+    graph
+        points: 0 -2 2 3
+        annotation:
+
+question
+    text: find the slope of the line that passes through {} and {}.
+    diagram: graph
+    background: schoolbook
+    points: 0 -2 2 3
+    zoom: 120%
+
+
+Do you see the triangle?
+
+
+
+
+
+      
+
+

@@ -1,0 +1,204 @@
+flex
+    aint no mtn high enuf!
+    cetz get = nature.mountain size = small
+
+flex
+    aint no river wide enuf!
+    cetz get = nature.river size = small
+
+
+flex
+    aint no valley low enuf!
+    cetz get = nature.valley size = small
+
+guys, what is this song?
+
+it's a #strike[love] slope song $.
+
+slope? 
+
+the slope of how things change.
+~
+let me show you with arrows.
+~
+flex centered = true 
+    
+    cetz get = nature.mountain-with-slope-arrows
+    cetz get = nature.river-with-slope-arrows
+    cetz get = nature.valley-with-slope-arrows
+
+What do the arrows mean?
+
+They represent the slope.
+
+flex
+    When the arrow points up, the slope is positive.
+    cetz get = slopes.arrow-up
+
+flex
+    When the arrow points down, the slope is negative.
+    cetz get = slopes.arrow-down
+
+flex
+    When the arrow is kind of flat, it means not much is changing.
+    cetz get = slopes.flat
+
+flex
+    When the arrow is steep, it means great change is happening.
+    cetz get = slopes.steep
+
+$, I have a question for you.
+
+Are you going to ask me for my phone number $?
+Because you can't have it.
+
+question
+    num: Q37
+    intro: Which curve shown below has the greatest slope?
+    axes: standard
+    type: plot
+    size: small
+    domain: -5, 5
+    labels: hidden
+    data:
+        fn: 2x + 3
+        color: blue
+
+        fn: -2x + 1
+        color: green 
+
+        fn: 0.5x + 1
+        color: purple
+
+    #{
+        for curve in data {
+            plot.add(curve.fn)
+        }
+    }
+
+
+I don't see any curves. All I see are straight lines.
+
+it is hard ...
+it is actually hard ...
+Curve just means the path of the equation. A line can be a curve.
+
+I don't see any equations either.
+
+They're right here!
+
+Aaaaaah!!! My eyes! Put them away!
+
+Question - Reiterated.
+
+I suppose, Is the answer A? 
+Out of all of them, A has the steepest upward climb.
+
+The answer is A!
+Good job $.
+
+Can I go home now?
+
+You don't want to discover the secrets of algebra?
+
+Not really.
+
+You don't want to draw lots of pretty triangles?
+
+I want to eat shrimp tacos.
+
+But Kaylee, the triangles are waiting for you. 
+
+Fine. But what do triangles have to do with slope?
+
+Everything.
+
+This is the slope arrow.
+
+Where does the slope arrow come from $?
+
+$, It comes from the triangle!
+
+When the triangle's height increases by a lot, the slope is going to be big.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+y = 3x + 2
+y = 5x + 6
+
+
+
+
+Because the slope keeps changing.
+~
+~
+Look at the valley.
+    weight: bold
+~
+
+flex
+    list
+        a strong downward slope
+            color: blue
+        then it's gentle
+            color: green
+        then it goes flat
+            color: yellow
+        then it starts to rise
+            color: red
+
+    cetz get = valley.with-colored-slope-arrows
+
+
+
+Look at this one.
+
+A super big deltay.
+
+That means the Y is changing a lot.
+
+The slope is dy/dx = 0.123
+
+Look at this one.
+
+The delta y is barely changing.
+
+
+math and cs comic books.
+i think there is a small chance here.
+losing the thread
+
+Setting up the templates

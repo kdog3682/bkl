@@ -1,0 +1,171 @@
+parser: clean
+source: shsat exam c #96
+format: student-student-question
+difficulty: hard
+answer: pi + 2
+
+question:
+
+A semicircle with a diameter of 4 sits on top of a square.
+Point P is at the center of the arc.
+What is the area of the shaded region?
+
+choices:
+pi + 2
+pi/2 + 2
+2pi + 2
+2pi - 4
+2pi + 4
+
+image: image.typ
+
+dialogue:
+
+When you encounter a difficult geometry question, try everything.
+
+But I don't know what to try.
+Maybe I can stare at it, and I'll think of something.
+
+Staring doesnt work. You have to move your hands.
+
+Move my hands ... like the macerena dance?
+::macarena.typ::
+
+Move your hands by writing things down. For example, you can find the area of the square.
+
+The area of the square is 4 * 4 = 16. But what does that do?
+
+You can also find the area of the semicircle.
+
+Can I?
+
+::equations.circleArea::
+    center = true
+
+flex
+    The diameter of the circle is 4.
+    the radius is 2. 
+    The area is ::compute(2)::.
+
+    ::circle-a::
+
+flex
+    And then cut it in half because it is a semicircle.
+    ::semicircle-a::
+
+flex
+
+So 2pi. But this still doesnt help us find the shaded region.
+
+We now know the area of the whole thing!
+
+But $, that still isnt even close to the shaded area.
+
+Now, the secret ingredient for hard geometry questions. Are you ready $?
+
+I am.
+
+You have to draw a line.
+
+Draw a line?
+
+Yes.
+
+But where?
+
+Anywhere.
+
+ANYWHERE?
+
+If you draw the right line, you will know.
+
+Are any of these lines correct?
+
+Diagram #38. 
+
+Why?
+
+Reason 1: Symmetry
+
+Reason 2: It forms a triangle
+
+I can find the area of this triangle!
+
+the base is the same as the radius which is 2.
+the height, well it's a square, so it's still 4.
+
+bh/2 -> 2 * 4 / 2 = 4. The triangle is 4.
+
+Also, the whole thing is 16 + 2pi. That's what we found earlier.
+That means half of the shape will be 8 + pi.
+The triangle is 6.
+
+subtracting the triangle away from the half, the shaded area is 8 + 2pi - 6 = 4 + 2pi.
+
+The answer is (K)!
+
+Great Work !
+
+
+Draw it Out
+
+
+
+
+
+vim glf
+
+For how /home/kdog3682/many integers of n will $n - 10 / 14 - n$ have a positive value?
+
+Try the number 6.
+
+
+$6 - 10 / 14 - 6 => -4/8$
+
+The numerator is negative so no.
+
+Is 0 a positive number?
+
+Zero is neither positive nor negative.
+
+$100 - 10 / 14 - 100$
+
+$5 - 10 / 14 - 5$
+
+$n - 10 / 14 - n$
+
+
+The ratio of $a$ to $b$ is 3 to 4.
+The ratio of $b$ to $c$ is 5 to 6.
+What is the ratio of $a$ to $c$?
+
+9:10
+5:8
+1:2
+2:5
+go-to-definition
+go-to
+do everything in a single file
+
+
+A bag of beans
+
+Sam has a jar of red, green, and blue jelly beans.
+12 of them are red, 25% are green, and the rest are blue.
+
+There is a 1 in 3 chance of randomly picking a red jelly bean.
+
+How /home/kdog3682/many jelly beans are blue?
+
+How do we do this question $?
+
+It's a probability question $.
+The key is to find the total.
+~
+Then we can do $part / total$.
+
+but we dont know the total
+
+one step at a time.
+
+go one step at a time ...

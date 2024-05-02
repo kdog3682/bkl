@@ -1,0 +1,26 @@
+ref
+    point-c-ref: 2, 1
+    labels:
+        p1:
+            label-offset: -1, -1
+            style:
+                fill: blue
+
+        p2:
+            label-offset: 1, 1
+            style:
+                fill: blue
+
+    x-bracket:
+        flip: true
+        bracket-offset: 1, 0
+        content-offset: 0, -1
+
+    y-bracket:
+        flip: false
+        bracket-offset: 1, 0
+        content-offset: 
+
+    y-point-indexes: 1, 2
+    x-point-indexes: 0, 2
+

@@ -1,0 +1,35 @@
+data:
+    generationOptions:
+        userName: sam
+
+
+h1 Story Sample
+
+The stories come in the form of dialogues.
+
+- The role of the "teacher" is played by the high school student.
+- The role of the 3 students is played by each of the elementary schoolers.
+
+
+container
+    v-btn Generate Sample Dialogue
+        log = dialogue
+
+        async click() {
+            sleep(rng(1000, 3000))
+            await this.generate(this.generationOptions.userName)
+            this.$refs.modal.activate()
+        }
+
+    panel
+
+        bold Generation Options
+        hr
+        span 
+            bold Display Name
+            v-input
+                connected = generationOptions
+                key = userName
+                placeholder = sam
+
+v-modal value = Dialogue Generated! ref = modal
