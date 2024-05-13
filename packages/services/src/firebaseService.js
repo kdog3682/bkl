@@ -69,7 +69,8 @@ async function readDocument(...path) {
 }
 
 async function readDocuments(...path) {
-    const data = await getDocs(collection(db, ...path))
+    const collectionRef = collection(db, ...path)
+    const data = await getDocs(collectionRef)
     return data.docs.map(getDocData)
 }
 

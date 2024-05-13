@@ -1,10 +1,22 @@
+import {ExpirationalStorage, LocalStorage} from "/home/kdog3682/2024-javascript/js-toolkit/LocalStorage.js"
 export {
     useFirebaseLogin,
 }
-import {getDocument} from "/home/kdog3682/@bkl/frontend/src/services/firebase.js"
+import {getDocument} from "/home/kdog3682/@bkl/frontend/src/services/firebaseService.js"
 import {setStorage} from "/home/kdog3682/@bkl/frontend/src/services/storage.js"
 
+function mounted() {
+    const data = storage.get('user')
+    if (data) {
+        // if the data expired ... it would be null.
+        const {user, status} = useFirebaseLogin()
+        user.value = data
+        status.value = 'loggedIn'
+    }
+}
+
 function useFirebaseLogin() {
+
     const user = ref(null)
     const username = ref('')
     const password = ref('')
@@ -19,7 +31,7 @@ function useFirebaseLogin() {
                 status.value = 'loggedIn'
                 user.value = data
                 if (rememberMe.value) {
-                    setStorage('user', data)
+                    storage.set('user', data)
                 }
                 return true
             } else {
@@ -39,3 +51,4 @@ function useFirebaseLogin() {
         login,
     }
 }
+

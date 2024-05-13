@@ -8,19 +8,13 @@ defineProps({
 const count = ref(10)
 </script>
 
-<template lang= "pug">
-    ul
-        li id = abc foobar = asdf
-            foobar: 
-div
-    ul( id='navigation' )
+<template lang="pug">
+    ul(style = 'background: red; color: blue')
         li(
-            id = 'abc', 
-            foobar = 'asdf'
-        )
-            button.asdf.asdf(@click = 'count++') {{count}}
-            button.foobar.asdf(v-if = 'count < 13') {{count}}
+            data-id = 123
+        ) howdy guys
 </template>
+
 
 <style lang = 'stylus'>
 
@@ -32,4 +26,9 @@ div
         color: green
         width: 100px
         background: yellow
+
+    [data-id = '123']
+        background: yellow
+        background: green 
+        
 </style>
