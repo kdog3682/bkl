@@ -1,6 +1,4 @@
-export {
-    getRepoFiles,
-}
+export { getRepoFiles }
 import { Octokit } from "@octokit/rest"
 import * as env from "@bkl/env"
 /* deno-fmt-ignore */ import { append, appendVariable, clip, } from "/home/kdog3682/2023/node-utils.js"
@@ -221,7 +219,11 @@ const getRepoIssues = async (path) => {
 function checkpointf(opts) {
     function create(x) {
         const items = flat(x)
-        if (items.every((item) => isString(item) && /^[\w-_.]+$/.test(item))) {
+        if (
+            items.every((item) =>
+                isString(item) && /^[\w-_.]+$/.test(item)
+            )
+        ) {
             return function lambda(s) {
                 return items.includes(s)
             }
@@ -230,8 +232,7 @@ function checkpointf(opts) {
                 return items.some((item) => item.test(s))
             }
         } else {
-            const r = RegExp(items.join('|'))
-            // console.log(r)
+            const r = RegExp(items.join("|"))
             return testf(r)
         }
     }
@@ -245,19 +246,25 @@ function checkpointf(opts) {
 
         if (include) {
             if (include(name)) {
-                console.log('including name via include', name)
+                console.log("including name via include", name)
                 return true
             } else {
-                console.log('excluding name via not include', name)
+                console.log(
+                    "excluding name via not include",
+                    name,
+                )
                 return false
             }
         }
         if (exclude) {
             if (exclude(name)) {
-                console.log('excluding name', name)
+                console.log("excluding name", name)
                 return false
             } else {
-                console.log('including name via not exclude', name)
+                console.log(
+                    "including name via not exclude",
+                    name,
+                )
                 // saver(name)
                 return true
             }
@@ -270,11 +277,10 @@ class PathCheckpoint {
         const fileOptions = options?.file || {}
         const dirOptions = options?.dir || {}
         const excludeFiles = [
-
-  "push.yml",
-  "LICENSE",
-  "README.md",
-  "stylua.toml",
+            "push.yml",
+            "LICENSE",
+            "README.md",
+            "stylua.toml",
             "README.md",
             "README",
             "Readme.md",
@@ -301,26 +307,26 @@ class PathCheckpoint {
             "package-lock.json",
             "yarn.lock", // Dependency lock files
             "composer.lock", // PHP composer lock file
-  ".git-blame-ignore-revs",
-  ".node-version",
-  ".prettierignore",
-  ".prettierrc",
-  "BACKERS.md",
-  "FUNDING.json",
-  "SECURITY.md",
-  "eslint.config.js",
-  "netlify.toml",
-  "package.json",
-  "pnpm-lock.yaml",
-  "pnpm-workspace.yaml",
-  "rollup.config.js",
-  "rollup.dts.config.js",
-  "tsconfig.build-browser.json",
-  "tsconfig.build-node.json",
-  "tsconfig.json",
-  "vitest.config.ts",
-  "vitest.e2e.config.ts",
-  "vitest.unit.config.ts"
+            ".git-blame-ignore-revs",
+            ".node-version",
+            ".prettierignore",
+            ".prettierrc",
+            "BACKERS.md",
+            "FUNDING.json",
+            "SECURITY.md",
+            "eslint.config.js",
+            "netlify.toml",
+            "package.json",
+            "pnpm-lock.yaml",
+            "pnpm-workspace.yaml",
+            "rollup.config.js",
+            "rollup.dts.config.js",
+            "tsconfig.build-browser.json",
+            "tsconfig.build-node.json",
+            "tsconfig.json",
+            "vitest.config.ts",
+            "vitest.e2e.config.ts",
+            "vitest.unit.config.ts",
         ]
         const excludeDirs = [
             "node_modules", // Node.js modules directory
@@ -449,8 +455,6 @@ function namer(x) {
     return x.name
 }
 
-
-
 function bouncer(o = {}) {
     const runner = (store) => {
         o.after(store)
@@ -467,9 +471,8 @@ function bouncer(o = {}) {
 // getRepoFiles("vuejs/core").then(console.log) working
 // getRepoFiles("vuejs/core",  {root: '.github', limit: 100, parser: (x) => x.name}).then(clip)
 // const grey = 'https://github.com/yorickpeterse/nvim-grey'
-const dir = 'vuejs/core'
+const dir = "vuejs/core"
 // const dir = grey
-
 
 function att(payload) {
     const tempfile = "/home/kdog3682/2024/temp.txt"
@@ -481,34 +484,33 @@ function att(payload) {
 // listRepos("kdog3682").then(console.log)
 
 async function getDefaultBranch(owner, repo) {
-  try {
-    const response = await octokit.repos.get({
-      owner,
-      repo,
-    });
+    try {
+        const response = await octokit.repos.get({
+            owner,
+            repo,
+        })
 
-    return response.data.default_branch;
-  } catch (error) {
-    console.error(error);
-  }
+        return response.data.default_branch
+    } catch (error) {
+        console.error(error)
+    }
 }
-
 
 async function getSha(url) {
     const [owner, repo] = parseGithubUrl(url)
-    retrun await octokit.rest.git.getRef({
-      owner,
-      repo,
-      ref: `heads/${getDefaultBranch(owner, repo)}`,
-    });
+    return await octokit.rest.git.getRef({
+        owner,
+        repo,
+        ref: `heads/${getDefaultBranch(owner, repo)}`,
+    })
 }
 
 // in progress
-function function getTree(url) {
+async function getTree(url) {
     const [owner, repo] = parseGithubUrl(url)
     const tree = await octokit.rest.git.getTree({
-      owner,
-      repo,
-      tree_sha: getSha(url),
+        owner,
+        repo,
+        tree_sha: getSha(url),
     })
 }
